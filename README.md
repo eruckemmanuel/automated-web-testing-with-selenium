@@ -3,6 +3,9 @@ This is a simple simulation to test the Signup and Login processes
 on [Hotjar](https://hotjar.com) website, using python selenium and pytest
 frameworks.
 
+## Platforms
+* Linux
+
 ## Key Modules
 * Selenium (Python)
 * Selenium Chrome driver

@@ -10,11 +10,11 @@ DEFAULT_WAIT_TIME = 10
 SELENIUM_WEBDRIVERS = {
     "chrome": {
         "func": webdriver.Chrome,
-        "driver_path": "./chromedriver"
+        "driver_path": "./drivers/chromedriver"
     },
     "firefox": {
         "func": webdriver.Firefox,
-        "driver_path": "./geckodriver"
+        "driver_path": "./drivers/geckodriver"
     }
 }
 
