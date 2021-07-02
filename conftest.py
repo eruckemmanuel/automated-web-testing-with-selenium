@@ -9,15 +9,16 @@ load_dotenv()
 @pytest.fixture()
 def load_signup_data():
     return {
-        "name": "Hotjar Tester",
-        "email": "eruck@vehseh.com",
-        "password": os.environ.get('HOTJAR_PASSWORD')
+        "name": os.environ.get('HOTJAR_ACCOUNT_NAME'),
+        "email": os.environ.get('HOTJAR_ACCOUNT_EMAIL'),
+        "password": os.environ.get('HOTJAR_ACCOUNT_PASSWORD')
     }
 
 
 @pytest.fixture()
 def load_login_data():
     return {
-        "email": "eruck@vehseh.com",
-        "password": os.environ.get('HOTJAR_PASSWORD')
+        "email": os.environ.get('HOTJAR_ACCOUNT_EMAIL'),
+        "password": os.environ.get('HOTJAR_ACCOUNT_PASSWORD'),
+        "remember": True
     }
