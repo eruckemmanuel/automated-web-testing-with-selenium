@@ -71,7 +71,7 @@ def take_screenshot(browser, file_path=None):
         String: Resulting path of the save Screenshot
     """
     if not file_path:
-        file_path = "screenshots/{}.png".format(uuid4())
+        file_path = "screenshots/{}.png".format(str(uuid4()))
         
     browser.get_screenshot_as_file(file_path)
     return file_path

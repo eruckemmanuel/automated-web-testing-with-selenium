@@ -11,6 +11,10 @@ frameworks.
 * Selenium Chrome driver
 * Pytest
 
+## Failed Test
+A failed test will generate a screenshot of the failed stage on the browser and save
+in the `screenshots` folder.
+
 ## Run Test
 
 ### Clone Repository
@@ -29,12 +33,21 @@ In the .env file, add details for Hotjar account
 
 ### Run Login test
 ```
-pytest -m login
+pytest -m login -v
 ```
 
 ### Run Signup test
 ```
-pytest -m sigup
+pytest -m sigup -v
+```
+
+### Run Test & Generate HTML Report
+```
+pytest -m login -v --html=login_test.hmtl
+```
+
+```
+pytest -m signup -v --html=signup_test.hmtl
 ```
 
 
