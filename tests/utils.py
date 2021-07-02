@@ -1,10 +1,9 @@
 from uuid import uuid4
+import logging
 
 from selenium import webdriver
 
-BASE_URL = "https://hotjar.com"
-LOGIN_URL = "https://insights.hotjar.com/login"
-SIGNUP_URL = "https://insights.hotjar.com/register"
+
 DEFAULT_WAIT_TIME = 10
 
 SELENIUM_WEBDRIVERS = {
@@ -18,19 +17,36 @@ SELENIUM_WEBDRIVERS = {
     }
 }
 
+
+NAME_PAGES = {
+    "login": {
+        "dest": "https://insights.hotjar.com/login",
+    },
+    "signup": {
+        "dest": "https://insights.hotjar.com/register"
+    },
+    "home": {
+        "det": "https://hotjar.com"
+    }
+}
+
 ELEMENT_SELECTORS = {
-    "login_btn": {
+    "login": {
         "xpath": "",
         "css": ".nav__link--alt-two",
     },
-    "signup_btn": {
+    "signup": {
         "xpath": "",
         "css": ".nav__link--alt-one"
     },
-    "submit_log": {
+    "submit_login": {
+        "xpath": "",
         "css": "#submit"
     }
 }
+
+
+logger = logging.getLogger(__name__)
 
 
 def get_webdriver(browser):
@@ -59,6 +75,7 @@ def assert_current_url(browser, expected_url):
         
 
 
+
 def take_screenshot(browser, file_path=None):
     """This function will take a screenshot of the current browser object and save
         in a provided or generated path.
@@ -75,3 +92,26 @@ def take_screenshot(browser, file_path=None):
         
     browser.get_screenshot_as_file(file_path)
     return file_path
+
+
+def open_named_page(browser, name):
+    """Selects a name page button, clicks and 
+        asserts that resulting page matches the expected result
+
+    Args:
+        browser (selenium.webdriver): Instance of webdriver object
+        name (String): name of named page in directory of NAMED_PAGES
+    """
+    named_page_link = ELEMENT_SELECTORS.get(name).get('css')
+    browser.find_element_by_css_selector(named_page_link).click()
+    
+    page_destination = NAME_PAGES.get(name).get('dest')
+
+    try:
+        assert_current_url(browser, page_destination)
+    except AssertionError as e:
+        logger.error("{} - Taking screenshot".format(e))
+        file_path = 'screenshots/wrong-address/{}.png'.format(page_destination.replace('https://', ""))
+        take_screenshot(file_path)
+
+        assert False
