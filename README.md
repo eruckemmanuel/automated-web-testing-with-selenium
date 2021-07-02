@@ -50,6 +50,5 @@ pytest -m login -v --html=login_test.html
 pytest -m signup -v --html=signup_test.html
 ```
 
-
-## TODO
-* Complete test automation for signup
+### Demo
+![](screenshots/Hotjartest.gif)
