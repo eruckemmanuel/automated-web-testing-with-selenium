@@ -51,4 +51,4 @@ pytest -m signup -v --html=signup_test.html
 ```
 
 ### Demo
-![](screenshots/Hotjartest.gif)
+![](./screenshots/Hotjartest.gif)
