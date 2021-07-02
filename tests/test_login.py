@@ -2,7 +2,7 @@ import logging
 
 import pytest
 
-from .utils import (NAME_PAGES, ELEMENT_SELECTORS, DEFAULT_WAIT_TIME)
+from .utils import (NAMED_PAGES, ELEMENT_SELECTORS, DEFAULT_WAIT_TIME)
 from .utils import (get_webdriver, assert_current_url, 
                     take_screenshot, open_named_page)
 
@@ -19,7 +19,14 @@ def enter_login_details(browser, details):
     browser.find_element_by_id('email').send_keys(details.get('email'))
     browser.find_element_by_id('password').send_keys(details.get('password'))
     if details.get('remember'):
-        browser.find_element_by_id('remember').click()
+        try:
+            browser.find_element_by_id('remember').click()
+        except Exception as e:
+            logger.error("{} - Taking screenshot".format(e))
+            take_screenshot(browser, 
+                            "screenshots/{}.png".format(browser.current_url.replace("https://", "")))
+            assert False
+
 
 @pytest.mark.login
 def test_login(load_login_data):
@@ -30,8 +37,8 @@ def test_login(load_login_data):
         load_login_data (Dict): username and password to test login
     """
     browser = get_webdriver('chrome')
-    browser.implicit_wait(DEFAULT_WAIT_TIME)
-    home_page = NAME_PAGES.get('home').get('dest')
+    browser.implicitly_wait(DEFAULT_WAIT_TIME)
+    home_page = NAMED_PAGES.get('home').get('dest')
     browser.get(home_page)
 
     # Lets make sure we didn't get a redirect to a different site
@@ -40,8 +47,8 @@ def test_login(load_login_data):
     except AssertionError as e:
         logger.error("{} - Taking screeenshot".format(e))
 
-        file_path = 'screenshots/wrong-address/{}.png'.format(home_page.replace('https://', ""))
-        take_screenshot(file_path)
+        file_path = 'screenshots/{}.png'.format(home_page.replace('https://', ""))
+        take_screenshot(browser, file_path)
 
         assert False
 

@@ -18,7 +18,7 @@ SELENIUM_WEBDRIVERS = {
 }
 
 
-NAME_PAGES = {
+NAMED_PAGES = {
     "login": {
         "dest": "https://insights.hotjar.com/login",
     },
@@ -26,7 +26,7 @@ NAME_PAGES = {
         "dest": "https://insights.hotjar.com/register"
     },
     "home": {
-        "det": "https://hotjar.com"
+        "dest": "https://www.hotjar.com/"
     }
 }
 
@@ -71,7 +71,8 @@ def assert_current_url(browser, expected_url):
         expected_url (String): The URL expected to match current url
     """
     assert browser.current_url == expected_url, \
-        "{} does not match the current browser url".format(expected_url)
+        "{} does not match the current browser url {}".format(expected_url, 
+                                                              browser.current_url)
         
 
 
@@ -105,13 +106,13 @@ def open_named_page(browser, name):
     named_page_link = ELEMENT_SELECTORS.get(name).get('css')
     browser.find_element_by_css_selector(named_page_link).click()
     
-    page_destination = NAME_PAGES.get(name).get('dest')
+    page_destination = NAMED_PAGES.get(name).get('dest')
 
     try:
         assert_current_url(browser, page_destination)
     except AssertionError as e:
         logger.error("{} - Taking screenshot".format(e))
-        file_path = 'screenshots/wrong-address/{}.png'.format(page_destination.replace('https://', ""))
+        file_path = '{}.png'.format(page_destination.replace('https://', ""))
         take_screenshot(file_path)
 
         assert False
