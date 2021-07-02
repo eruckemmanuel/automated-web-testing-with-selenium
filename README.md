@@ -43,11 +43,11 @@ pytest -m sigup -v
 
 ### Run Test & Generate HTML Report
 ```
-pytest -m login -v --html=login_test.hmtl
+pytest -m login -v --html=login_test.html
 ```
 
 ```
-pytest -m signup -v --html=signup_test.hmtl
+pytest -m signup -v --html=signup_test.html
 ```
 
 
