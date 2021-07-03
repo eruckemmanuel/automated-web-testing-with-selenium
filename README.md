@@ -46,6 +46,11 @@ pytest -m failed_login -v
 pytest -m sigup -v
 ```
 
+### Run All tests
+```
+pytest -v
+```
+
 ### Run Test & Generate HTML Report
 ```
 pytest -m successful_login -v --html=reports/successful_login_test.html
@@ -58,6 +63,10 @@ pytest -m failed_login -v --html=reports/failed_login_test.html
 
 ```
 pytest -m signup -v --html=reports/signup_test.html
+```
+
+```
+pytest -v --html=reports/hotjar_test.html
 ```
 
 ### Demo
