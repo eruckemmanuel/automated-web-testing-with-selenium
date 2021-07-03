@@ -8,9 +8,10 @@ frameworks.
 
 ## Platforms
 * Linux
+
 To run test on other platforms (Windows, Mac), download the corresponding driver from [Selenium](https://selenium.dev)
 
-This demo uses the selenium chrome driver for Linux
+This demo currently uses the selenium chrome driver for Linux
 
 ## Key Modules
 * Selenium (Python)
