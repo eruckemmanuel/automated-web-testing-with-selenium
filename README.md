@@ -31,6 +31,11 @@ pip install -r requirements.txt
 In the .env file, add details for Hotjar account
 
 
+### Run Successful Login Test
+```
+pytest -m successful_login -v
+```
+
 ### Run Failed Login Test
 ```
 pytest -m failed_login -v
@@ -43,12 +48,13 @@ pytest -m sigup -v
 
 ### Run Test & Generate HTML Report
 ```
-pytest -m failed_login -v --html=reports/failed_login_test.html
+pytest -m successful_login -v --html=reports/successful_login_test.html
 ```
 
 ```
-pytest -m successful_login -v --html=reports/successful_login_test.html
+pytest -m failed_login -v --html=reports/failed_login_test.html
 ```
+
 
 ```
 pytest -m signup -v --html=reports/signup_test.html
