@@ -70,4 +70,4 @@ pytest -v --html=reports/hotjar_test.html
 ```
 
 ### Demo
-![](./screenshots/HotjarTestDemo.gif)
+![](./screenshots/Hotjar_test.gif)

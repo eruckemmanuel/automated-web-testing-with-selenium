@@ -67,3 +67,5 @@ def test_signup(load_signup_data):
 
     # submit signup
     browser.find_element_by_id('submit-step-1').click()
+    
+    browser.close()

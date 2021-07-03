@@ -87,7 +87,8 @@ def perform_login(login_data, fail=False):
         
         take_screenshot(browser, 'screenshots/dashboard.png')        
         assert NAMED_PAGES.get('dashboard').get('dest') in browser.current_url
-
+    
+    browser.close()
 
 @pytest.mark.failed_login
 def test_failed_login(get_wrong_credentials):
