@@ -14,11 +14,26 @@ def load_signup_data():
         "password": os.environ.get('HOTJAR_ACCOUNT_PASSWORD')
     }
 
-
+ 
+    
 @pytest.fixture()
-def load_login_data():
+def get_correct_credentials():
     return {
         "email": os.environ.get('HOTJAR_ACCOUNT_EMAIL'),
         "password": os.environ.get('HOTJAR_ACCOUNT_PASSWORD'),
-        "remember": True
+        "remember": False
+    }
+    
+
+@pytest.fixture()
+def get_wrong_credentials():
+    """This fixture will add hotjar to the actual password to make it wrong
+
+    Returns:
+        Dict: Dictionary of wrong password
+    """
+    return {
+        "email": os.environ.get('HOTJAR_ACCOUNT_EMAIL'),
+        "password": "{}hotjar".format(os.environ.get('HOTJAR_ACCOUNT_PASSWORD')),
+        "remember": False
     }
