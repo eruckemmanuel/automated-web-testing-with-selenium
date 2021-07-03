@@ -13,8 +13,8 @@ To run test on other platforms (Windows, Mac), download the corresponding driver
 
 This demo currently uses the selenium chrome driver for Linux
 
-## Key Modules
-* Selenium (Python)
+## Key Parts
+* Selenium Python package
 * Selenium Chrome driver
 * Pytest
 
