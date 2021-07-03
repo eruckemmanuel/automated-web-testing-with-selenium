@@ -3,6 +3,9 @@ This is a simple simulation to test the Signup and Login processes
 on [Hotjar](https://hotjar.com) website, using python selenium and pytest
 frameworks.
 
+## Demo
+![](./screenshots/Hotjar_test.gif)
+
 ## Platforms
 * Linux
 
@@ -68,6 +71,3 @@ pytest -m signup -v --html=reports/signup_test.html
 ```
 pytest -v --html=reports/hotjar_test.html
 ```
-
-### Demo
-![](./screenshots/Hotjar_test.gif)
