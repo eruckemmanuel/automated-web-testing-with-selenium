@@ -1,4 +1,4 @@
-# Automated Website Test
+# Automated web testing with Selenium
 This is an automation to test the Signup and Login processes
 on [Hotjar](https://hotjar.com) website, using python selenium and pytest
 frameworks.
