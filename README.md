@@ -1,5 +1,5 @@
-# Hotjar Simple Automated Website Test
-This is a simple simulation to test the Signup and Login processes
+# Automated Website Test
+This is an automation to test the Signup and Login processes
 on [Hotjar](https://hotjar.com) website, using python selenium and pytest
 frameworks.
 
